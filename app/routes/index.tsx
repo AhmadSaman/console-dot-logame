@@ -1,32 +1,31 @@
+import { useRef } from "react";
+import type { ActionArgs } from "@remix-run/node";
+import { Form } from "@remix-run/react";
+import { redirect } from "@remix-run/node";
+import ThemeDropdown from "~/components/ThemeDropdown";
+
+// TODO: in the next Task you will work on the theming
+export const action = async ({ request }: ActionArgs) => {
+  const formData = await request.formData();
+  console.log(formData.get("theme"));
+  return redirect(request.url);
+};
+
 export default function Index() {
+  const buttonRef = useRef() as any;
+
+  const changeTheme = (newTheme: string) => {
+    buttonRef.current.value = newTheme;
+    buttonRef.current.click();
+  };
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <Form method="post">
+      <ThemeDropdown
+        theme={buttonRef?.current?.value ?? "ahmad"}
+        setTheme={changeTheme}
+      />
+      <button ref={buttonRef} type="submit" name="theme" hidden></button>
+    </Form>
   );
 }
