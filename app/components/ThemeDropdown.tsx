@@ -1,7 +1,7 @@
-import { styled } from "@stitches/react";
+import React from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { MixerHorizontalIcon } from "@radix-ui/react-icons";
-import React from "react";
+import { styled } from "config/stitches.config";
 
 const ToggleButton = styled("button", {
   all: "unset",
