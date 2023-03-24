@@ -10,3 +10,21 @@ export const { styled, getCssText, globalCss, createTheme } = createStitches({
     },
   },
 });
+
+export const secondTheme = createTheme("secondTheme", {
+  colors: {
+    "color-1": "#222831",
+    "color-2": "#393E46",
+    "color-3": "#00ADB5",
+    "color-4": "#EEEEEE",
+  },
+});
+
+export const thirdTheme = createTheme("thirdTheme", {
+  colors: {
+    "color-4": "#FFF5E4",
+    "color-3": "#FFE3E1",
+    "color-2": "#FFD1D1",
+    "color-1": "#FF9494",
+  },
+});
