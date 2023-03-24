@@ -28,3 +28,10 @@ export const thirdTheme = createTheme("thirdTheme", {
     "color-1": "#FF9494",
   },
 });
+
+export const globalStyles = globalCss({
+  "*": {
+    backgroundColor: "$color-1",
+    fontFamily: "Fira Code",
+  },
+});
