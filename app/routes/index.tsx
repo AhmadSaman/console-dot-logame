@@ -1,31 +1,23 @@
-import { useRef } from "react";
-import type { ActionArgs } from "@remix-run/node";
-import { Form } from "@remix-run/react";
-import { redirect } from "@remix-run/node";
-import ThemeDropdown from "~/components/ThemeDropdown";
+import { styled } from "config/stitches.config";
+import { TypeAnimation } from "react-type-animation";
 
-// TODO: in the next Task you will work on the theming
-export const action = async ({ request }: ActionArgs) => {
-  const formData = await request.formData();
-  console.log(formData.get("theme"));
-  return redirect(request.url);
-};
+const Div = styled("div", {
+  color: "$color-4",
+});
+const TextAnimation = styled(TypeAnimation, {
+  fontSize: "1.5rem",
+});
 
 export default function Index() {
-  const buttonRef = useRef() as any;
-
-  const changeTheme = (newTheme: string) => {
-    buttonRef.current.value = newTheme;
-    buttonRef.current.click();
-  };
-
   return (
-    <Form method="post">
-      <ThemeDropdown
-        theme={buttonRef?.current?.value ?? "ahmad"}
-        setTheme={changeTheme}
-      />
-      <button ref={buttonRef} type="submit" name="theme" hidden></button>
-    </Form>
+    <Div>
+      <TextAnimation sequence={["Console.logame", 1000]} speed={50} />
+      <div>
+        <TextAnimation
+          sequence={[2000, "null", 1000, "undefined", 1000, "NaN", 1000]}
+          speed={50}
+        />
+      </div>
+    </Div>
   );
 }
