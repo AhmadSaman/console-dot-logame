@@ -13,7 +13,13 @@ export default function handleRequest(
 ) {
   const markup = renderToString(
     <RemixServer context={remixContext} url={request.url} />
-  ).replace(/<\/head>/, `<style id="stitches">${getCssText()}</style></head>`);
+  ).replace(
+    /<\/head>/,
+    `<style id="stitches">
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+    ${getCssText()}
+    </style></head>`
+  );
 
   responseHeaders.set("Content-Type", "text/html");
 
