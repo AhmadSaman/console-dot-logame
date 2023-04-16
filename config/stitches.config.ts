@@ -28,3 +28,7 @@ export const thirdTheme = createTheme("thirdTheme", {
     "color-1": "#FF9494",
   },
 });
+
+export const globalStyles = globalCss({
+  "*": { fontFamily: "'Ubuntu', sans-serif" },
+});
