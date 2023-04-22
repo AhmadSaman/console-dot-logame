@@ -1,5 +1,4 @@
-import { useNavigate } from "@remix-run/react";
-import { styled } from "config/stitches.config";
+import { styled } from "@stitches/react";
 
 const Div = styled("div", {
   width: "100vw",
@@ -8,17 +7,16 @@ const Div = styled("div", {
   display: "flex",
   justifyContent: "center",
 });
+const H2 = styled("h2", {
+  margin: "0 auto",
+  color: "$color-4",
+});
 
 const Container = styled("div", {
   margin: "auto 0px",
   display: "flex",
   flexDirection: "column",
 });
-
-const H1 = styled("h1", {
-  color: "$color-4",
-});
-
 const Button = styled("button", {
   fontWeight: "bold",
   color: "white",
@@ -37,16 +35,34 @@ const Button = styled("button", {
     border: "1px solid $color-2",
     color: "$color-4",
   },
+  "&:disabled": {
+    opacity: "0.4",
+    "&:hover": {
+      backgroundColor: "$color-2",
+      border: "none",
+      color: "white",
+      cursor: "auto",
+    },
+  },
+});
+const Modes = styled("div", {
+  margin: "auto auto",
+  display: "flex",
+  gap: "1rem",
 });
 
-export default function Index() {
-  const navigate = useNavigate();
+function mode() {
   return (
     <Div>
       <Container>
-        <H1>Console Logame</H1>
-        <Button onClick={() => navigate("/mode")}>Play</Button>
+        <H2>Select Mode</H2>
+        <Modes>
+          <Button>Casual</Button>
+          <Button disabled={true}>Nerds</Button>
+        </Modes>
       </Container>
     </Div>
   );
 }
+
+export default mode;
