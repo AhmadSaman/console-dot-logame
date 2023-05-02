@@ -31,4 +31,5 @@ export const thirdTheme = createTheme("thirdTheme", {
 
 export const globalStyles = globalCss({
   "*": { fontFamily: "'Ubuntu', sans-serif", margin: "0px", padding: "0px" },
+  "li > code": { padding: "0px 5px !important" },
 });
