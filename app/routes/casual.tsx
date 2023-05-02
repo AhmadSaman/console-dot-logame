@@ -27,8 +27,10 @@ const Wrapper = styled("div", {
 
 export async function loader() {
   const randomNumber = Math.floor(Math.random() * 154) + 1;
-  const file = fs.readFileSync(`questions/a-${randomNumber}.md`, "utf8");
-
+  const file = fs.readFileSync(
+    `${__dirname}/../questions/a-${randomNumber}.md`,
+    "utf8"
+  );
   const { attributes, body } = parseFrontMatter(file);
   return json({ attributes, body });
 }
