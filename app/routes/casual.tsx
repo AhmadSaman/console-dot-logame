@@ -32,20 +32,22 @@ export async function loader() {
     "utf8"
   );
   const { attributes, body } = parseFrontMatter(file);
-  return json({ attributes, body });
+  const converter = new showdown.Converter({
+    extensions: [showdownHighlight({ pre: true, auto_detection: true })],
+  });
+  const question = converter.makeHtml(body);
+  return json({ attributes, question });
 }
 
 function Casual() {
   const data = useLoaderData<typeof loader>();
-  const converter = new showdown.Converter({
-    extensions: [showdownHighlight({ pre: true, auto_detection: true })],
-  });
+
   return (
     <Div>
       <Wrapper
         className="markdown-body"
         dangerouslySetInnerHTML={{
-          __html: converter.makeHtml(data.body),
+          __html: data.question,
         }}
       />
     </Div>
