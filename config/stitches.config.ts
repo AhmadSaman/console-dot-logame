@@ -9,6 +9,9 @@ export const { styled, getCssText, globalCss, createTheme } = createStitches({
       "color-4": "#7A3E65",
     },
   },
+  media: {
+    bp1: "(max-width: 700px)",
+  },
 });
 
 export const secondTheme = createTheme("secondTheme", {

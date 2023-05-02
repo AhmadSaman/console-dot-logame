@@ -1,5 +1,5 @@
 import fs from "fs";
-import { styled } from "@stitches/react";
+import { styled } from "config/stitches.config";
 
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
@@ -17,12 +17,22 @@ const Div = styled("div", {
 });
 
 const Wrapper = styled("div", {
-  margin: "50px 0 0 0",
-  minWidth: "500px",
   height: "fit-content",
   padding: "15px",
   fontSize: "1.2rem",
-  borderRadius: "10px",
+  variants: {
+    small: {
+      true: {
+        margin: "0px",
+        width: "100%",
+        borderRadius: "0px 0px 10px 10px",
+      },
+      false: {
+        borderRadius: "10px",
+        margin: "50px",
+      },
+    },
+  },
 });
 
 export async function loader() {
@@ -45,6 +55,7 @@ function Casual() {
   return (
     <Div>
       <Wrapper
+        small={{ "@initial": false, "@bp1": true }}
         className="markdown-body"
         dangerouslySetInnerHTML={{
           __html: data.question,
