@@ -1,3 +1,4 @@
+import { useNavigate } from "@remix-run/react";
 import { styled } from "@stitches/react";
 
 const Div = styled("div", {
@@ -51,13 +52,20 @@ const Modes = styled("div", {
   gap: "1rem",
 });
 
-function mode() {
+function Mode() {
+  const navigate = useNavigate();
   return (
     <Div>
       <Container>
         <H2>Select Mode</H2>
         <Modes>
-          <Button>Casual</Button>
+          <Button
+            onClick={() => {
+              navigate("/casual");
+            }}
+          >
+            Casual
+          </Button>
           <Button disabled={true}>Nerds</Button>
         </Modes>
       </Container>
@@ -65,4 +73,4 @@ function mode() {
   );
 }
 
-export default mode;
+export default Mode;
