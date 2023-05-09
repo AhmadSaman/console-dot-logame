@@ -1,34 +1,19 @@
-# Welcome to Remix!
+[![image](https://user-images.githubusercontent.com/55833403/234310259-589831f2-9721-482d-8773-02f24f65076f.png)
+](https://console-dot-logame.vercel.app/)
 
-- [Remix Docs](https://remix.run/docs)
+# Console Logame
+ Console Logame is an interactive console-based game that tests your knowledge of JavaScript through multiple-choice questions. With various game modes to choose from, it offers an engaging way to enhance your JavaScript skills and have fun at the same time.
 
-## Deployment
+## Modes
+ - Casual: 
+      nothing interesting just random questions coming again and again 
+ - Nerds(coming soon): 
+      this one is interesting, there will be a timer, and the timer based on your answer will decrease and increase(right answer +SET_AMOUNT_OF_OF_SEC, wrong answer -SET_AMOUNT_OF_OF_SEC), and to make it more challenging there will be a leaderboard(will be an MD file showing top 100 gamers)⚠️feel free to work on this feature⚠️
+      
+## how to contribute
+no `.env` or anything just run `npm install` and then `npm run dev` bara bem bara bum
+## Add More Questions
+To add more questions to this Repo please check the other [repo](https://github.com/AhmadSaman/console-dot-log-questions) 
 
-After having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
-
-If you'd like to avoid using a Git repository, you can also deploy the directory by running [Vercel CLI](https://vercel.com/cli):
-
-```sh
-npm i -g vercel
-vercel
-```
-
-It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
-
-## Development
-
-To run your Remix app locally, make sure your project's local dependencies are installed:
-
-```sh
-npm install
-```
-
-Afterwards, start the Remix development server like so:
-
-```sh
-npm run dev
-```
-
-Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
-
-If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+### Inspired By 
+- [lydiahallie/javascript-questions](https://github.com/lydiahallie/javascript-questions)
