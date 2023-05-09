@@ -11,8 +11,10 @@ import { globalStyles } from "config/stitches.config";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Console logame",
   viewport: "width=device-width,initial-scale=1",
+  ["og:image"]:
+    "https://user-images.githubusercontent.com/55833403/234310259-589831f2-9721-482d-8773-02f24f65076f.png",
 });
 
 export default function App() {
