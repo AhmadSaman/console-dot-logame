@@ -1,8 +1,9 @@
+import { useState } from "react";
 import fs from "fs";
 import { styled } from "config/stitches.config";
 
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Form, useLoaderData } from "@remix-run/react";
 
 import showdown from "showdown";
 import showdownHighlight from "showdown-highlight";
@@ -24,7 +25,7 @@ const Wrapper = styled("div", {
     small: {
       true: {
         margin: "0px",
-        width: "100%",
+        width: "fit-content",
         borderRadius: "0px 0px 10px 10px",
       },
       false: {
@@ -71,13 +72,27 @@ const Button = styled("button", {
   },
 });
 
+const Container = styled("div", {
+  height: "100vh",
+});
+const H3 = styled("h3", {
+  color: "$color-4",
+  margin: "0 auto",
+});
+
 export async function loader() {
   const randomNumber = Math.floor(Math.random() * 154) + 1;
   const file = fs.readFileSync(
     `${__dirname}/../questions/a-${randomNumber}.md`,
     "utf8"
   );
-  const { attributes, body } = parseFrontMatter(file);
+  const {
+    attributes,
+    body,
+  }: {
+    attributes: { answer: string };
+    body: string;
+  } = parseFrontMatter(file);
   const converter = new showdown.Converter({
     extensions: [showdownHighlight({ pre: true, auto_detection: true })],
   });
@@ -87,10 +102,24 @@ export async function loader() {
 
 function Casual() {
   const data = useLoaderData<typeof loader>();
+  const [msg, setMsg] = useState<string>();
+  const [showNext, setShowNext] = useState<boolean>();
 
+  const handleClick = (clickedAnswer: string) => {
+    if (clickedAnswer === data.attributes.answer) {
+      setMsg("Correct! 🎉");
+    } else {
+      setMsg(`Wrong! 🥲`);
+    }
+    setShowNext(true);
+  };
+
+  const handleNext = () => {
+    setShowNext(false);
+  };
   return (
     <Div>
-      <div>
+      <Container>
         <Wrapper
           small={{ "@initial": false, "@bp1": true }}
           className="markdown-body"
@@ -99,12 +128,21 @@ function Casual() {
           }}
         />
         <ButtonsContainer>
-          <Button>A</Button>
-          <Button>B</Button>
-          <Button>C</Button>
-          <Button>D</Button>
+          {showNext ? (
+            <Form method="get" onSubmit={handleNext}>
+              <H3>{msg}</H3>
+              <Button type="submit">Next</Button>
+            </Form>
+          ) : (
+            <>
+              <Button onClick={() => handleClick("A")}>A</Button>
+              <Button onClick={() => handleClick("B")}>B</Button>
+              <Button onClick={() => handleClick("C")}>C</Button>
+              <Button onClick={() => handleClick("D")}>D</Button>
+            </>
+          )}
         </ButtonsContainer>
-      </div>
+      </Container>
     </Div>
   );
 }
