@@ -1,5 +1,5 @@
 import { useNavigate } from "@remix-run/react";
-import { styled } from "@stitches/react";
+import { styled } from "config/stitches.config";
 
 const Div = styled("div", {
   width: "100vw",
