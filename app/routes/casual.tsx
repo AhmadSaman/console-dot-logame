@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import fs from "fs";
 import { styled } from "config/stitches.config";
 
@@ -113,10 +113,10 @@ function Casual() {
     }
     setShowNext(true);
   };
-
-  const handleNext = () => {
+  useEffect(() => {
     setShowNext(false);
-  };
+  }, [data.question]);
+
   return (
     <Div>
       <Container>
@@ -129,7 +129,7 @@ function Casual() {
         />
         <ButtonsContainer>
           {showNext ? (
-            <Form method="get" onSubmit={handleNext}>
+            <Form method="get">
               <H3>{msg}</H3>
               <Button type="submit">Next</Button>
             </Form>
