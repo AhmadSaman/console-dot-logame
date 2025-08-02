@@ -9,6 +9,7 @@
       nothing interesting just random questions coming again and again 
  - Nerds(coming soon): 
       this one is interesting, there will be a timer, and the timer based on your answer will decrease and increase(right answer +SET_AMOUNT_OF_OF_SEC, wrong answer -SET_AMOUNT_OF_OF_SEC), and to make it more challenging there will be a leaderboard(will be an MD file showing top 100 gamers)⚠️feel free to work on this feature⚠️
+
       
 ## how to contribute
 no `.env` or anything just run `npm install` and then `npm run dev` bara bem bara bum
